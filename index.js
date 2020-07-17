@@ -3,7 +3,7 @@ const Client = new Discord.Client();
 const {
     prefix,
     token,
-} = require('./config.json');
+} = require('./config.js');
 
 Client.on('message', async message => {
     if (message.content === prefix) {
