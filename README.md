@@ -1,2 +1,4 @@
 # negaodabl-discord-bot
-Bot da aperta a braba 
+Bot [Discord](https://discord.com/new) para aperta a braba 
+
+**Mais informações de como apertar a braba em breve 🤝😠**
