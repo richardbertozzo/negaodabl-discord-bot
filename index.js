@@ -6,33 +6,59 @@ const {
 } = require('./config.js');
 
 Client.on('message', async message => {
-    if (message.content === prefix) {
+    if (message.content.startsWith(prefix)) {
         execute(message);
     }
 });
 
 async function execute(message) {
-    // const args = message.content.split(' ');
+    const args = message.content.split(' ');
+    const option = args[1];
+    if (!option || option === 'help') {
+        return message.channel.send([
+            'Bot 🤖 Negão da BL tem os seguintes comandos 📋:',
+            '`negaodabl mery`',
+            '`negaodabl apertaabraba`',
+            '`negaodabl bagulhodoido`',
+        ]);
+    } else {
+        const voiceChannel = message.member.voice.channel;
+        if (!voiceChannel) {
+            return message.channel.send('Você precisa estar em um canal de voz para apertar a braba!');
+        }
 
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel) {
-        return message.channel.send('You need to be in a voice channel to play music!');
-    }
-    const permissions = voiceChannel.permissionsFor(message.client.user);
-    if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-        return message.channel.send('I need the permissions to join and speak in your voice channel!');
-    }
+        const permissions = voiceChannel.permissionsFor(message.client.user);
+        if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
+            return message.channel.send('Eu preciso de permissão para ingressar e falar no canal de voz, para apertar a braba!');
+        }
 
-    try {
-        const connection = await voiceChannel.join();
-        const dispatcher = connection.play('aperta_a_braba.mp3', { volume: 0.9 });
-        message.channel.send('APERTANDO A BRABA :compression: :angry:');
-        dispatcher.on('end', (end) => {
+        const audio = getAudio(option);
+        try {
+            const connection = await voiceChannel.join();
+            const dispatcher = connection.play(audio, { volume: 0.9 });
+            message.channel.send('APERTANDO A BRABA :compression: :angry:');
+
+            dispatcher.on('finish', () => {
+                voiceChannel.leave();
+            });
+        } catch (err) {
+            console.log(err);
             voiceChannel.leave();
-        });
-    } catch (err) {
-        return message.channel.send('Erro em reproduzir aperta a braba');
+            return message.channel.send('Erro em apertar a braba!');
+        }
     }
 }
+
+const getAudio = (arg) => {
+    const prefix = './audios';
+    switch (arg) {
+        case 'apertaabraba':
+            return `${prefix}/aperta_a_braba.mp3`;
+        case 'bagulhodoido':
+            return `${prefix}/bagulho_doido.mp3`;
+        default:
+            return `${prefix}/mery.mp3`;
+    }
+};
 
 Client.login(token);
