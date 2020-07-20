@@ -56,6 +56,14 @@ const getAudio = (arg) => {
             return `${prefix}/aperta_a_braba.mp3`;
         case 'bagulhodoido':
             return `${prefix}/bagulho_doido.mp3`;
+        case 'apertaabraba-ingles':
+            return `${prefix}/aperta_a_braba_ingles.mp3`;
+        case 'apertaabraba-russo':
+            return `${prefix}/aperta_a_braba_russo.mp3`;
+        case 'apertaabraba-japones':
+            return `${prefix}/aperta_a_braba_japones.mp3`;
+        case 'apertaabraba-ratinho':
+            return `${prefix}/aperta_a_braba_ratinho.mp3`;
         default:
             return `${prefix}/mery.mp3`;
     }
