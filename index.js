@@ -11,6 +11,57 @@ Client.on('message', async message => {
     }
 });
 
+const prefixAudio = './audios';
+const options = new Map([
+    [
+        'braba', {
+            command: 'braba',
+            file: `${prefixAudio}/aperta_a_braba.mp3`,
+        }
+    ],
+    [
+        'mery', {
+            command: 'mery',
+            file: `${prefixAudio}/aperta_a_braba.mp3`,
+        }
+    ],
+    [
+        'braba-russo', {
+            command: 'braba-russo',
+            file: `${prefixAudio}/aperta_a_braba_russo.mp3`,
+        }
+    ],
+    [
+        'braba-ingles', {
+            command: 'braba-ingles',
+            file: `${prefixAudio}/aperta_a_braba_ingles.mp3`,
+        }
+    ],
+    [
+        'braba-japones', {
+            command: 'braba-japones',
+            file: `${prefixAudio}/aperta_a_braba_japones.mp3`,
+        }
+    ],
+    [
+        'braba-ratinho', {
+            command: 'braba-ratinho',
+            file: `${prefixAudio}/aperta_a_braba_ratinho.mp3`,
+        }
+    ],
+    [
+        'bagulhodoido', {
+            command: 'bagulhodoido',
+            file: `${prefixAudio}/bagulho_doido.mp3`,
+        }
+    ],
+]);
+
+const getRandom = (options) => {
+    const keys = Array.from(options.keys());
+    return keys[Math.floor(Math.random() * keys.length)];
+};
+
 async function execute(message) {
     const args = message.content.split(' ');
     const option = args[1];
@@ -32,7 +83,15 @@ async function execute(message) {
             return message.channel.send('Eu preciso de permissão para ingressar e falar no canal de voz, para apertar a braba!');
         }
 
-        const audio = getAudio(option);
+        let audio;
+        if (option === 'random') {
+            const opt = getRandom(options);
+            audio = opt.file;
+        } else {
+            const opt = options.get(option);
+            audio = opt.file;
+        }
+
         try {
             const connection = await voiceChannel.join();
             const dispatcher = connection.play(audio, { volume: 0.9 });
@@ -48,25 +107,5 @@ async function execute(message) {
         }
     }
 }
-
-const getAudio = (arg) => {
-    const prefix = './audios';
-    switch (arg) {
-        case 'apertaabraba':
-            return `${prefix}/aperta_a_braba.mp3`;
-        case 'bagulhodoido':
-            return `${prefix}/bagulho_doido.mp3`;
-        case 'apertaabraba-ingles':
-            return `${prefix}/aperta_a_braba_ingles.mp3`;
-        case 'apertaabraba-russo':
-            return `${prefix}/aperta_a_braba_russo.mp3`;
-        case 'apertaabraba-japones':
-            return `${prefix}/aperta_a_braba_japones.mp3`;
-        case 'apertaabraba-ratinho':
-            return `${prefix}/aperta_a_braba_ratinho.mp3`;
-        default:
-            return `${prefix}/mery.mp3`;
-    }
-};
 
 Client.login(token);
