@@ -85,8 +85,8 @@ async function execute(message) {
 
         let audio;
         if (option === 'random') {
-            const opt = getRandom(options);
-            audio = opt.file;
+            const key = getRandom(options);
+            audio = options.get(key).file;
         } else {
             const opt = options.get(option);
             audio = opt.file;
