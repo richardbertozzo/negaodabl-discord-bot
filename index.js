@@ -17,45 +17,75 @@ const options = new Map([
         'braba', {
             command: 'braba',
             file: `${prefixAudio}/aperta_a_braba.mp3`,
+            description: 'Audio de apertar a braba',
         }
     ],
     [
         'mery', {
             command: 'mery',
             file: `${prefixAudio}/aperta_a_braba.mp3`,
+            description: 'Audio de mery mery pfff',
         }
     ],
     [
         'braba-russo', {
             command: 'braba-russo',
             file: `${prefixAudio}/aperta_a_braba_russo.mp3`,
+            description: 'Audio de apertar a braba versão russa',
         }
     ],
     [
         'braba-ingles', {
             command: 'braba-ingles',
             file: `${prefixAudio}/aperta_a_braba_ingles.mp3`,
+            description: 'Audio de apertar a braba versão inglesa',
         }
     ],
     [
         'braba-japones', {
             command: 'braba-japones',
             file: `${prefixAudio}/aperta_a_braba_japones.mp3`,
+            description: 'Audio de apertar a braba versão japonesa',
         }
     ],
     [
         'braba-ratinho', {
             command: 'braba-ratinho',
             file: `${prefixAudio}/aperta_a_braba_ratinho.mp3`,
+            description: 'Audio de apertar a braba versão ratinho',
         }
     ],
     [
         'bagulhodoido', {
             command: 'bagulhodoido',
             file: `${prefixAudio}/bagulho_doido.mp3`,
+            description: 'Audio que o bagaulho ta doido',
         }
     ],
 ]);
+
+/**
+ * @param {Map<string,Object>} commands disponible commands on bot
+ * 
+ */
+const getDoc = (commands) => {
+    const description = `O bot reproduz audios do Negão da BL.
+        O unico comando disponivel é \`${prefix} [option]\`, exemplo: \`${prefix} mery\`.
+        **Comandos**:`;
+
+    const HEmbed = new Discord.MessageEmbed()
+        .setTitle(`Seguintes comandos disponíveis 📋:`)
+        .setColor('#4a3722')
+        .setDescription(description);
+
+    commands.forEach((value, key) => {
+        HEmbed.addField(`${prefix} ${value.command}`, value.description, false);
+    });
+
+    HEmbed.addField('random', 'Reproduz um audio aleatório', true);
+    HEmbed.addField('help', 'Mostra a lista de comandos e opções', true);
+    return HEmbed;
+};
 
 const getRandom = (options) => {
     const keys = Array.from(options.keys());
@@ -66,12 +96,8 @@ async function execute(message) {
     const args = message.content.split(' ');
     const option = args[1];
     if (!option || option === 'help') {
-        return message.channel.send([
-            'Bot 🤖 Negão da BL tem os seguintes comandos 📋:',
-            '`negaodabl mery`',
-            '`negaodabl apertaabraba`',
-            '`negaodabl bagulhodoido`',
-        ]);
+        const embed = getDoc(options);
+        return message.channel.send({ split: true, embed });
     } else {
         const voiceChannel = message.member.voice.channel;
         if (!voiceChannel) {
