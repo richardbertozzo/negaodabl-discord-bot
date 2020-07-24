@@ -96,7 +96,7 @@ const getDoc = (commands) => {
         HEmbed.addField(`${prefix} ${value.command}`, value.description, false);
     });
 
-    HEmbed.addField('random', 'Reproduz um Áudio aleatório', true);
+    HEmbed.addField('random', 'Reproduz um áudio aleatório', true);
     HEmbed.addField('help', 'Mostra a lista de comandos e opções', true);
     return HEmbed;
 };
@@ -123,18 +123,18 @@ async function execute(message) {
             return message.channel.send('Eu preciso de permissão para ingressar e falar no canal de voz, para apertar a braba!');
         }
 
-        let Áudio;
+        let audio;
         if (option === 'random') {
             const key = getRandom(options);
-            Áudio = options.get(key).file;
+            audio = options.get(key).file;
         } else {
             const opt = options.get(option);
-            Áudio = opt.file;
+            audio = opt.file;
         }
 
         try {
             const connection = await voiceChannel.join();
-            const dispatcher = connection.play(Áudio, { volume: 0.9 });
+            const dispatcher = connection.play(audio, { volume: 0.9 });
             message.channel.send('APERTANDO A BRABA :compression: :angry:');
 
             dispatcher.on('finish', () => {
