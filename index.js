@@ -17,49 +17,63 @@ const options = new Map([
         'braba', {
             command: 'braba',
             file: `${prefixAudio}/aperta_a_braba.mp3`,
-            description: 'Audio de apertar a braba',
+            description: 'Áudio de apertar a braba',
         }
     ],
     [
         'mery', {
             command: 'mery',
             file: `${prefixAudio}/aperta_a_braba.mp3`,
-            description: 'Audio de mery mery pfff',
+            description: 'Áudio de mery mery pfff',
         }
     ],
     [
         'braba-russo', {
             command: 'braba-russo',
             file: `${prefixAudio}/aperta_a_braba_russo.mp3`,
-            description: 'Audio de apertar a braba versão russa',
+            description: 'Áudio de apertar a braba versão russa',
         }
     ],
     [
         'braba-ingles', {
             command: 'braba-ingles',
             file: `${prefixAudio}/aperta_a_braba_ingles.mp3`,
-            description: 'Audio de apertar a braba versão inglesa',
+            description: 'Áudio de apertar a braba versão inglesa',
         }
     ],
     [
         'braba-japones', {
             command: 'braba-japones',
             file: `${prefixAudio}/aperta_a_braba_japones.mp3`,
-            description: 'Audio de apertar a braba versão japonesa',
+            description: 'Áudio de apertar a braba versão japonesa',
+        }
+    ],
+    [
+        'braba-frances', {
+            command: 'braba-frances',
+            file: `${prefixAudio}/aperta_a_braba_frances.mp3`,
+            description: 'Áudio de apertar a braba versão francesa',
+        }
+    ],
+    [
+        'braba-espanhol', {
+            command: 'braba-espanhol',
+            file: `${prefixAudio}/aperta_a_braba_espanhol.mp3`,
+            description: 'Áudio de apertar a braba versão espanhola',
         }
     ],
     [
         'braba-ratinho', {
             command: 'braba-ratinho',
             file: `${prefixAudio}/aperta_a_braba_ratinho.mp3`,
-            description: 'Audio de apertar a braba versão ratinho',
+            description: 'Áudio de apertar a braba versão ratinho',
         }
     ],
     [
         'bagulhodoido', {
             command: 'bagulhodoido',
             file: `${prefixAudio}/bagulho_doido.mp3`,
-            description: 'Audio que o bagaulho ta doido',
+            description: 'Áudio que o bagulho tá doido',
         }
     ],
 ]);
@@ -82,7 +96,7 @@ const getDoc = (commands) => {
         HEmbed.addField(`${prefix} ${value.command}`, value.description, false);
     });
 
-    HEmbed.addField('random', 'Reproduz um audio aleatório', true);
+    HEmbed.addField('random', 'Reproduz um áudio aleatório', true);
     HEmbed.addField('help', 'Mostra a lista de comandos e opções', true);
     return HEmbed;
 };
