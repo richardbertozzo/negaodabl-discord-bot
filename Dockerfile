@@ -1,5 +1,8 @@
 FROM node:12.18.2-alpine
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache git ffmpeg
+
 RUN mkdir -p /app
 
 COPY . /app
@@ -7,7 +10,5 @@ COPY . /app
 WORKDIR /app
 
 RUN npm i
-
-EXPOSE 3000
 
 CMD ["npm","start"]
