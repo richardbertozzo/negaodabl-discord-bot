@@ -28,7 +28,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: negaodabl
-          IMAGE_TAG: build-${{ github.ref }}
+          IMAGE_TAG: build-${{ github.sha }}
         run: |
           docker image build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker image tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
