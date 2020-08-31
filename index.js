@@ -129,6 +129,9 @@ async function execute(message) {
             audio = options.get(key).file;
         } else {
             const opt = options.get(option);
+            if (!opt) {
+                return message.channel.send('Opção não conhecida para apertar a braba :compression: :angry:!');
+            }
             audio = opt.file;
         }
 
