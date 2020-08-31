@@ -1,5 +1,8 @@
-const Discord = require('discord.js');
-const Client = new Discord.Client();
+const {
+    Client: DiscordClient,
+    Intents
+} = require('discord.js');
+const Client = new DiscordClient({ ws: { intents: Intents.GUILD_MESSAGES } });
 const {
     prefix,
     token,
@@ -80,7 +83,7 @@ const options = new Map([
 
 /**
  * @param {Map<string,Object>} commands disponible commands on bot
- * 
+ *
  */
 const getDoc = (commands) => {
     const description = `O bot reproduz audios do Negão da BL.
