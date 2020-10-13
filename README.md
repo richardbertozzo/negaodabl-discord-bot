@@ -4,8 +4,9 @@ Bot [Discord](https://discord.com/new) para aperta a braba
 ## Hacktoberfest da Bl
 ![hacktober](./hacktoberfestdabl.png)
 
-repo aberto para  novos comandos criados pela comunidade.
-crie sua ideia nas issues para melhor organização.
+Repo aberto para  novos comandos criados pela comunidade.
+
+Crie sua ideia nas issues para melhor organização.
 
 ## Developing
 
