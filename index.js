@@ -31,6 +31,13 @@ const options = new Map([
         }
     ],
     [
+        'yerm', {
+            command: 'yerm',
+            file: `${prefixAudio}/yerm.mp3`,
+            description: 'Áudio de mery mery pfff reverso',
+        }
+    ],
+    [
         'braba-russo', {
             command: 'braba-russo',
             file: `${prefixAudio}/aperta_a_braba_russo.mp3`,
@@ -71,7 +78,13 @@ const options = new Map([
             file: `${prefixAudio}/aperta_a_braba_ratinho.mp3`,
             description: 'Áudio de apertar a braba versão ratinho',
         }
-    ],
+    ], [
+        'mery-speed', {
+            command: 'braba-speed',
+            file: `${prefixAudio}/mery_speed.mp3`,
+            description: 'Áudio de mery versão 2xSpeed',
+        }
+    ],  
     [
         'bagulhodoido', {
             command: 'bagulhodoido',
