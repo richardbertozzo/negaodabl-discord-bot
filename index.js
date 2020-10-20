@@ -23,13 +23,7 @@ const options = new Map([
             description: 'Áudio de apertar a braba',
         }
     ],
-    [
-        'mery', {
-            command: 'mery',
-            file: `${prefixAudio}/aperta_a_braba.mp3`,
-            description: 'Áudio de mery mery pfff',
-        }
-    ],
+     
     [
         'yerm', {
             command: 'yerm',
