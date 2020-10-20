@@ -66,6 +66,13 @@ const options = new Map([
         }
     ],
     [
+        'braba-italiano', {
+            command: 'braba-italiano',
+            file: `${prefixAudio}/aperta_a_braba_italiano.mp3`,
+            description: 'Áudio de apertar a braba versão italiana',
+        }
+    ],
+    [
         'braba-ratinho', {
             command: 'braba-ratinho',
             file: `${prefixAudio}/aperta_a_braba_ratinho.mp3`,
