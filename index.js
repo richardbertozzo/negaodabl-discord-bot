@@ -31,9 +31,9 @@ const options = new Map([
         }
     ],
     [
-        'yerm', {
-            command: 'yerm',
-            file: `${prefixAudio}/yerm.mp3`,
+        'yrem', {
+            command: 'yrem',
+            file: `${prefixAudio}/yrem.mp3`,
             description: 'Áudio de mery mery pfff reverso',
         }
     ],
