@@ -99,6 +99,20 @@ const options = new Map([
             description: 'Áudio que o bagulho tá doido',
         }
     ],
+    [
+        'estourado', {
+            command: 'estourado',
+            file: `${prefixAudio}/estourado.mp3`,
+            description: 'Áudio que o bagulho tá estourado',
+        }
+    ],
+    [
+        'bugado', {
+            command: 'bugado',
+            file: `${prefixAudio}/bugado.mp3`,
+            description: 'Áudio que o bagulho tá bugado',
+        }
+    ],
 ]);
 
 /**
