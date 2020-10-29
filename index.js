@@ -1,6 +1,7 @@
 const {
     Client: DiscordClient,
-    Intents
+    Intents,
+    MessageEmbed
 } = require('discord.js');
 const Client = new DiscordClient({ ws: { intents: Intents.GUILD_MESSAGES } });
 const {
@@ -124,7 +125,7 @@ const getDoc = (commands) => {
         O unico comando disponivel é \`${prefix} [option]\`, exemplo: \`${prefix} mery\`.
         **Comandos**:`;
 
-    const HEmbed = new Discord.MessageEmbed()
+    const HEmbed = new MessageEmbed()
         .setTitle(`Seguintes comandos disponíveis 📋:`)
         .setColor('#4a3722')
         .setDescription(description);
