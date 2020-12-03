@@ -114,6 +114,13 @@ const options = new Map([
             description: 'Áudio que o bagulho tá bugado',
         }
     ],
+    [
+        'crianca', {
+            command: 'crianca',
+            file: `${prefixAudio}/crianca.mp3`,
+            description: 'Áudio que o bagulho tá infantil',
+        }
+    ],
 ]);
 
 /**
